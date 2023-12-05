@@ -1,3 +1,5 @@
 git add .
-git commit -m "make"
+read message
+git commit -m $message
 git push
+exit
