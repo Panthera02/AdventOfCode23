@@ -1,6 +1,6 @@
 git add .
-set /p input= Type any input
-git commit -m $message
+set /p input= Type the message
+git commit -m %input%
 git push
 pause
 exit
