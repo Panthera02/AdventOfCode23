@@ -2,9 +2,9 @@ sum = 0
 
 with open(".\day2\input.txt") as input:
     for line in input:
-        minRed = 20
-        minGreen = 20
-        minBlue = 20
+        minRed = 0
+        minGreen = 0
+        minBlue = 0
 
         id = 0
         inl = ""
@@ -33,7 +33,6 @@ with open(".\day2\input.txt") as input:
                 l.append(i)
 
         lastS = -2
-        legal = True
         for semicolon in index:
             lastK = lastS
             for komma in semicolon:
@@ -47,21 +46,14 @@ with open(".\day2\input.txt") as input:
                 else: 
                     num = int(wort[0:2])
                     farbe = wort[3:]
-                if farbe == "red" and num > 12: legal = False
-                if farbe == "green" and num > 13: legal = False
-                if farbe == "blue" and num > 14: legal = False
                 lastK = komma
-                if not legal: break
-                if farbe == "red" and num < minRed: num = minRed
-                if farbe == "green" and num < minGreen: num = minGreen
-                if farbe == "blue" and num < minBlue: num = minBlue
-            if not legal: break
+                if farbe == "red" and num > minRed: minRed = num
+                if farbe == "green" and num > minGreen: minGreen = num
+                if farbe == "blue" and num > minBlue: minBlue = num
             lastS = semicolon[-1]
         
-        
-        #print(legal)
-        if legal:
-            sum += minRed*minGreen*minBlue
-        #print("ID: " + str(id) + "; Sum: " + str(sum))        
+        sum += minRed*minGreen*minBlue
+        #print("minRed: " + str(minRed) + "; minGreen: " + str(minGreen) + "; minBlue: " + str(minBlue))
+        #print("power: " + str(minRed*minGreen*minBlue) + "; Sum: " + str(sum))        
         #print()
     print(sum)
