@@ -21,7 +21,7 @@ with open(".\day2\input.txt") as input:
         index = []
         l = []
         for i in range(len(inl)):
-            if inl[i] == ';':
+            if inl[i] == ';' or inl[i] == '\n':
                 l.append(i)
                 index.append(l)
                 l = []
@@ -34,7 +34,7 @@ with open(".\day2\input.txt") as input:
             lastK = lastS
             for komma in semicolon:
                 wort = inl[lastK+2:komma]
-                print(wort)
+                #print(wort)
                 num = 0
                 farbe = ""
                 if wort[1] == ' ':
@@ -52,8 +52,9 @@ with open(".\day2\input.txt") as input:
             lastS = semicolon[-1]
         
         
-        print(legal)
-        print()
+        #print(legal)
         if legal:
             sum += id
+        #print("ID: " + str(id) + "; Sum: " + str(sum))        
+        #print()
     print(sum)
