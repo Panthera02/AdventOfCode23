@@ -2,6 +2,10 @@ sum = 0
 
 with open(".\day2\input.txt") as input:
     for line in input:
+        minRed = 20
+        minGreen = 20
+        minBlue = 20
+
         id = 0
         inl = ""
         
@@ -48,13 +52,16 @@ with open(".\day2\input.txt") as input:
                 if farbe == "blue" and num > 14: legal = False
                 lastK = komma
                 if not legal: break
+                if farbe == "red" and num < minRed: num = minRed
+                if farbe == "green" and num < minGreen: num = minGreen
+                if farbe == "blue" and num < minBlue: num = minBlue
             if not legal: break
             lastS = semicolon[-1]
         
         
         #print(legal)
         if legal:
-            sum += id
+            sum += minRed*minGreen*minBlue
         #print("ID: " + str(id) + "; Sum: " + str(sum))        
         #print()
     print(sum)
