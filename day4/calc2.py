@@ -1,5 +1,5 @@
 summe = 0
-debug = True
+debug = False
 
 def p(message):
     if debug:
